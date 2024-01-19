@@ -1,62 +1,33 @@
-/*
-const add = function (...nums) {
-  return nums.reduce((sum, current) => sum + current, 0);
-};
+let num1, num2, operator;
 
-const subtract = function (num1 = 0, num2 = 0) {
-  return num1 - num2;
-};
+function add(num1, num2) {
+  return num1+num2;
+}
 
-const sum = function (arr) {
-  return arr.reduce((sum, current) => sum + current, 0);
-};
+function subtract(num1, num2) {
+  return num1-num2;
+}
 
-const multiply = function (arr) {
-  return arr.reduce((sum, current) => sum * current, 1);
-};
+function multiply(num1, num2) {
+  return num1*num2;
+}
 
-const power = function (num1, num2) {
-  return num1 ** num2;
-};
+function divide(num1, num2) {
+  return num2===0 ? "Infinity" : num1/num2 
+}
 
-const factorial = function (num) {
-  let result = 1;
-  for (let i = 1; i<=num; i++) {
-    result = result * i;
+function operate(num1, num2, operator){
+  num1 = Number(num1);
+  num2 = Number(num2);
+
+  switch(operator){
+    case "+":
+      return add(num1, num2);
+    case "-":
+      return subtract(num1, num2);
+    case "*":
+      return multiply(num1, num2);
+    case "/":
+      return divide(num1, num2);
   }
-  return result;
-
-
-};
-*/
-
-/* 
-const add = function (a, b) {
-  return a + b;
-};
-
-const subtract = function (a, b) {
-  return a - b;
-};
-
-const sum = function (array) {
-  return array.reduce((total, current) => total + current, 0);
-};
-
-const multiply = function (array) {
-  return array.reduce((product, current) => product * current)
-};
-
-const power = function (a, b) {
-  return Math.pow(a, b);
-};
-
-const factorial = function (n) {
-  if (n === 0) return 1;
-  let product = 1;
-  for (let i = n; i > 0; i--) {
-    product *= i;
-  }
-  return product;
-};
-*/
+}
