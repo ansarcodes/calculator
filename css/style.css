@@ -4,7 +4,7 @@
 :buttons>buttons-row*/
 * {
     font-family: Arial, Helvetica, sans-serif;
-    /* color: white; */
+    color: white;
 
 }
 
@@ -19,44 +19,54 @@ body {
 }
 
 .container {
+    /* background-color:#2fc44f; */
+    background-color: rgb(50, 50, 50);
     height: 600px;
     width: 360px;
-    background-color:#2fc44f;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
 
+    border-style: none;
+    border-radius: 8px;
+    filter: drop-shadow(0px 0px 20px red);
+
 }
 
 .display {
-    background-color: red;
-    font-size: 40px;
+    /* background-color: red; */
     flex-grow: 2;
     display: flex;
     align-items: center;
     justify-content: right;
 
+    flex-wrap: wrap;
     max-width: 360px;
 }
 
 .active-display {
-    background-color: orange;
-    margin-right: 20px;
+    /* background-color: orange; */
+    font-size: 36px;
+    max-width: 360px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    text-align: right;
+    padding-right: 20px;
+    padding-top: 20px;
 }
 
 .buttons {
-    background-color: #2f61c4;
+    /* background-color: #2f61c4; */
     flex-grow: 3;
     display: flex;
     flex-direction: column;
 
-    background-color: #9d3190;
     gap: 10px;
     padding: 10px;
 }
 
 .buttons-row {
-    background-color: aqua;
+    /* background-color: aqua; */
     display: flex;
     flex-grow: 1;
 
@@ -64,17 +74,21 @@ body {
 }
 
 button {
-    background-color: aquamarine;
+    /* background-color: aquamarine; */
+    background-color: rgb(15, 15, 15);
     flex-grow: 1;
     flex-basis: 25%;
 
     font-size: 24px;
     border-style: none;
+    border-radius: 5px;
 }
 
 button:hover {
-    background-color: #4a4949;
+    /* background-color: #4a4949; */
+    background-color: rgb(115, 115, 115);
 }
 button:active {
-    background-color: rgb(99, 189, 159);
+    /* background-color: rgb(99, 189, 159); */
+    background-color: rgb(95, 95, 95);
 }
