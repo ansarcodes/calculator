@@ -1,84 +1,80 @@
-body {
-    color: white;
+/* container>>
+:display>active-display
+
+:buttons>buttons-row*/
+* {
     font-family: Arial, Helvetica, sans-serif;
+    /* color: white; */
+
+}
+
+body {
     height: 100vh;
     margin: 0;
     padding: 0;
     background-color: bisque;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 }
 
 .container {
+    height: 600px;
+    width: 360px;
+    background-color:#2fc44f;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    /* justify-content: space-between; */
-    width: 360px;
-    height: 600px;
-    margin: 0;
-    padding: 0;
-    /* margin: 100px;
-    padding: 100px; */
+    flex-wrap: wrap;
+
 }
 
-.display{
-    display: flex;
-    justify-content: right;
-    align-items: center;
-    background-color:#4d4d4d;
-    width: 100%;
-    flex-grow: 1;
-}
-.active-display{
+.display {
+    background-color: red;
     font-size: 40px;
-    padding: 10px;
+    flex-grow: 2;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+
+    max-width: 360px;
+}
+
+.active-display {
+    background-color: orange;
+    margin-right: 20px;
 }
 
 .buttons {
+    background-color: #2f61c4;
+    flex-grow: 3;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    flex-grow: 4;
-    background-color: #4d4d4d;
+
+    background-color: #9d3190;
+    gap: 10px;
+    padding: 10px;
 }
-.buttons-row{
-    width: 100%;
-    flex-grow: 1;
+
+.buttons-row {
+    background-color: aqua;
     display: flex;
-    justify-content: center;
-    align-items: stretch;
-    /* margin-right: 10px; */
-    /* flex-wrap: wrap; */
-}
-button {
     flex-grow: 1;
-    /* flex-wrap: wrap; */
-    /* margin-right: 2px;
-    margin-top: 2px;
-    margin-bottom: 2px; */
-    /* border-top: #6f1717 solid 2px;
-    border-left: #bb0000 solid 2px; */
-    /* border-top: 2px solid black; */
-    /* border-style: none; */
-    background-color: #28282B;
-    color: white;
-    /* font-family: Arial, Helvetica, sans-serif; */
-    font-weight: 600;
-    font-size: 24px;
-    /* border-radius: 0px; */
-    width: 100%;
-    /* margin-bottom: 5px;
-    margin-left: 10px; */
+
+    gap: 10px;
 }
-button:hover{
+
+button {
+    background-color: aquamarine;
+    flex-grow: 1;
+    flex-basis: 25%;
+
+    font-size: 24px;
+    border-style: none;
+}
+
+button:hover {
     background-color: #4a4949;
 }
-/* container>>
-:display>active-display
-
-:buttons>buttons-row*/
-
+button:active {
+    background-color: rgb(99, 189, 159);
+}
