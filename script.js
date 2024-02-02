@@ -11,11 +11,13 @@ clearBtns.forEach((button) => {
 
 numberBtns.forEach((button) => {
   button.addEventListener("click", () => {
-    if (display.textContent === "0" || display.textContent === "Infinity" || display.textContent == lastResult) {
+    if (display.textContent === "0" || display.textContent === "Infinity" || display.textContent === "-Infinity" || display.textContent == lastResult) {
       display.textContent = button.textContent;
       lastResult = "";
+      limitNumber();
     } else {
       display.textContent += button.textContent;
+      limitNumber();
     }
   })
 })
@@ -33,6 +35,7 @@ operatorBtns.forEach((button) => {
       num1 = display.textContent;
       num2 = "";
       operator = button.textContent;
+      limitNumber();
     } else {
       display.textContent = "0";
     }
@@ -66,6 +69,7 @@ function equals() {
     display.textContent = lastResult;
     num1 = "";
     num2 = "";
+    limitNumber();
   }
 }
 
@@ -82,7 +86,7 @@ function multiply(num1, num2) {
 }
 
 function divide(num1, num2) {
-  return num2 === 0 ? "Infinity" : num1 / num2
+  return num2 === 0 ? "Infinity" : num1 / num2;
 }
 
 function operate(num1, num2, operator) {
@@ -101,3 +105,23 @@ function operate(num1, num2, operator) {
   }
 }
 
+function limitNumber() {
+  if (display.textContent > 999999999999999){
+    display.textContent = "Infinity";
+  } else if (display.textContent < -999999999999999) {
+    display.textContent = "-Infinity";
+  }
+  else if (display.textContent.includes(".")){
+    display.textContent = Math.round((Number(display.textContent)) * Number(("1").padEnd((15-(Number(display.textContent)).toString().indexOf(".")), "0"))) / (Number(("1").padEnd((15-(Number(display.textContent)).toString().indexOf(".")), "0")));
+  }
+}
+
+function addFloat(){
+  if (!display.textContent.includes(".") && !display.textContent.includes("Infinity")){
+    display.textContent = display.textContent.concat(".");
+  }
+}
+
+function plusMinus(){
+  display.textContent = Number(display.textContent)*(-1);
+}
