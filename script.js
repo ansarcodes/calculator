@@ -39,20 +39,23 @@ operatorBtns.forEach((button) => {
   })
 })
 
-function clearDisplay(option){
-  switch (option){
+function clearDisplay(option) {
+  switch (option) {
     case "CE":
       display.textContent = "0";
+      break;
     case "C":
       display.textContent = "0";
       num1 = "";
       num2 = "";
+      break;
     case "←":
-      if (display.textContent !== "0" && display.textContent.length > 1){
+      if (display.textContent !== "0" && display.textContent.length > 1) {
         display.textContent = display.textContent.slice(0, -1);
       } else if (display.textContent.length === 1) {
         display.textContent = "0";
       }
+      break;
   }
 }
 
