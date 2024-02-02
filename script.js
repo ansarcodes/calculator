@@ -2,6 +2,12 @@ let num1, num2, operator, lastResult;
 const display = document.querySelector(".active-display");
 const numberBtns = document.querySelectorAll(".number");
 const operatorBtns = document.querySelectorAll(".operator");
+const clearBtns = document.querySelectorAll(".clear");
+clearBtns.forEach((button) => {
+  button.addEventListener("click", () => {
+    clearDisplay(button.textContent);
+  })
+})
 
 numberBtns.forEach((button) => {
   button.addEventListener("click", () => {
@@ -27,12 +33,28 @@ operatorBtns.forEach((button) => {
       num1 = display.textContent;
       num2 = "";
       operator = button.textContent;
-      // lastResult = "";
     } else {
       display.textContent = "0";
     }
   })
 })
+
+function clearDisplay(option){
+  switch (option){
+    case "CE":
+      display.textContent = "0";
+    case "C":
+      display.textContent = "0";
+      num1 = "";
+      num2 = "";
+    case "←":
+      if (display.textContent !== "0" && display.textContent.length > 1){
+        display.textContent = display.textContent.slice(0, -1);
+      } else if (display.textContent.length === 1) {
+        display.textContent = "0";
+      }
+  }
+}
 
 function equals() {
   if (lastResult == "" && num1 !== undefined && num1 !== "") {
