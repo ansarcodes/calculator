@@ -8,7 +8,7 @@ body {
     height: 100vh;
     margin: 0;
     padding: 0;
-    background-color: rgb(255, 228, 196);
+    background-color: hsl(33, 45%, 58%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -88,4 +88,10 @@ button:active {
 }
 .green-bg {
     background-color: rgb(52, 207, 52);
+}
+.green-bg:hover {
+    background-color: rgb(78, 252, 78);
+}
+.green-bg:active {
+    background-color: rgb(39, 150, 39);
 }
