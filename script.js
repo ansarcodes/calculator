@@ -1,4 +1,4 @@
-let num1, num2, operator, lastResult;
+let num1, num2, operator, lastResult, previousNumber;
 const display = document.querySelector(".active-display");
 const numberBtns = document.querySelectorAll(".number");
 const operatorBtns = document.querySelectorAll(".operator");
@@ -12,10 +12,12 @@ clearBtns.forEach((button) => {
 numberBtns.forEach((button) => {
   button.addEventListener("click", () => {
     if (display.textContent === "0" || display.textContent === "Infinity" || display.textContent === "-Infinity" || display.textContent == lastResult) {
+      previousNumber = display.textContent;
       display.textContent = button.textContent;
-      lastResult = "";
+      lastResult = "0";
       limitNumber();
     } else {
+      previousNumber = display.textContent;
       display.textContent += button.textContent;
       limitNumber();
     }
@@ -28,15 +30,16 @@ operatorBtns.forEach((button) => {
       operator = button.textContent;
       num1 = display.textContent;
       display.textContent = "0";
-    } else if (num2 === undefined || num2 === "") {
+    } else if (num1 !== undefined && num1 !== "" && num2 === undefined || num2 === "") {
       num2 = display.textContent;
       lastResult = operate(num1, num2, operator);
       display.textContent = lastResult;
-      num1 = display.textContent;
+      num1 = lastResult;
       num2 = "";
       operator = button.textContent;
       limitNumber();
-    } else {
+    } 
+    else {
       display.textContent = "0";
     }
   })
@@ -51,6 +54,7 @@ function clearDisplay(option) {
       display.textContent = "0";
       num1 = "";
       num2 = "";
+      lastResult = "0";
       break;
     case "←":
       if (display.textContent !== "0" && display.textContent.length > 1) {
@@ -63,12 +67,13 @@ function clearDisplay(option) {
 }
 
 function equals() {
-  if (lastResult == "" && num1 !== undefined && num1 !== "") {
+  if (num1 !== undefined && num1 !== "") {
     num2 = display.textContent;
     lastResult = operate(num1, num2, operator);
     display.textContent = lastResult;
     num1 = "";
     num2 = "";
+
     limitNumber();
   }
 }
@@ -110,8 +115,9 @@ function limitNumber() {
     display.textContent = "Infinity";
   } else if (display.textContent < -999999999999999) {
     display.textContent = "-Infinity";
-  }
-  else if (display.textContent.includes(".")){
+  } else if (display.textContent.includes(".") && display.textContent.length > 15 && previousNumber.length===15) {
+    display.textContent = previousNumber;
+  } else if (display.textContent.includes(".") && display.textContent.length > 15){
     display.textContent = Math.round((Number(display.textContent)) * Number(("1").padEnd((15-(Number(display.textContent)).toString().indexOf(".")), "0"))) / (Number(("1").padEnd((15-(Number(display.textContent)).toString().indexOf(".")), "0")));
   }
 }
